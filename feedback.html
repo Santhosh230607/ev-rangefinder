@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback — EV RangeFinder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <svg class="bolt" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 2L4 14H11L10 22L20 9H13L13 2Z" fill="#00D9A0"/>
+    </svg>
+    EV RangeFinder
+  </div>
+  <nav>
+    <a href="select-vehicle.html">New trip</a>
+    <a href="feedback.html" class="current">Feedback</a>
+  </nav>
+</header>
+
+<main>
+  <div style="max-width:520px;margin:0 auto;">
+    <div class="page-head center">
+      <h1>How was your prediction?</h1>
+      <p class="center" style="margin:0 auto;">Tell us how close your actual range came to our estimate — it helps us tune the model for your vehicle type.</p>
+    </div>
+
+    <div class="panel">
+      <form id="feedback-form">
+        <div class="field center">
+          <label>Rate the accuracy</label>
+          <div class="star-rating" id="star-rating">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="actual-range">Actual range you got (km) — optional</label>
+          <input type="number" id="actual-range" placeholder="e.g. 42">
+        </div>
+
+        <div class="field">
+          <label for="comment">Your review</label>
+          <textarea id="comment" placeholder="What worked, what didn't?"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">Submit feedback</button>
+      </form>
+      <p class="form-foot hidden" id="thanks-msg">Thanks — your feedback was recorded.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>&copy; 2026 EV RangeFinder. Built for every wheel — 2, 3, 4, and loaded.</span>
+    <div class="footer-links">
+      <a href="select-vehicle.html">New trip</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="feedback.js"></script>
+</body>
+</html>

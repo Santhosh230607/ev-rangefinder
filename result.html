@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your range — EV RangeFinder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <svg class="bolt" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 2L4 14H11L10 22L20 9H13L13 2Z" fill="#00D9A0"/>
+    </svg>
+    EV RangeFinder
+  </div>
+  <nav>
+    <a href="select-vehicle.html">New trip</a>
+    <a href="feedback.html">Feedback</a>
+  </nav>
+</header>
+
+<main>
+  <div class="page-head">
+    <p class="step">Step 3 of 3</p>
+    <h1>Here's what you can expect</h1>
+    <p>Based on your battery, the weather, and your route conditions.</p>
+  </div>
+
+  <div class="panel">
+    <div class="gauge-wrap">
+      <div class="gauge-value"><span id="range-km">--</span></div>
+      <div class="gauge-unit">estimated kilometres remaining</div>
+    </div>
+
+    <ul class="factor-list" id="factor-list">
+      <!-- populated by JS -->
+    </ul>
+  </div>
+
+  <div class="panel mt-2">
+    <h2>Nearest EV charging stations</h2>
+    <p>Sorted by shortest distance from <span id="start-place">your location</span>.</p>
+    <ul class="station-list" id="station-list">
+      <li class="station-item"><span>Loading nearby stations…</span></li>
+    </ul>
+  </div>
+
+  <div class="center mt-2">
+    <a href="select-vehicle.html" class="btn btn-ghost">Plan another trip</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>&copy; 2026 EV RangeFinder. Built for every wheel — 2, 3, 4, and loaded.</span>
+    <div class="footer-links">
+      <a href="feedback.html">Feedback</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="result.js"></script>
+</body>
+</html>

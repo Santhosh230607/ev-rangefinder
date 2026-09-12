@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign in — EV RangeFinder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <svg class="bolt" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 2L4 14H11L10 22L20 9H13L13 2Z" fill="#00D9A0"/>
+    </svg>
+    EV RangeFinder
+  </div>
+  <nav>
+    <a href="login.html" class="current">Sign in</a>
+  </nav>
+</header>
+
+<main>
+  <div style="max-width:420px;margin:2rem auto 0;">
+    <div class="page-head center">
+      <p class="step">Welcome back</p>
+      <h1 id="form-title">Sign in to your account</h1>
+      <p class="center" style="margin:0 auto;">Track your real range across every trip, not just the number on the dash.</p>
+    </div>
+
+    <div class="panel">
+      <form id="auth-form">
+        <div class="field hidden" id="name-field">
+          <label for="name">Full name</label>
+          <input type="text" id="name" placeholder="e.g. Ananya Rao" autocomplete="name">
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com" autocomplete="email" required>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="At least 8 characters" autocomplete="current-password" required>
+          <p class="error-text" id="auth-error">Check your email and password and try again.</p>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" id="submit-btn">Sign in</button>
+      </form>
+
+      <p class="form-foot">
+        <span id="toggle-text">New here?</span>
+        <a href="#" id="toggle-mode">Create an account</a>
+      </p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>&copy; 2026 EV RangeFinder. Built for every wheel — 2, 3, 4, and loaded.</span>
+    <div class="footer-links">
+      <a href="feedback.html">Feedback</a>
+    </div>
+  </div>
+</footer>
+
+<script src="auth.js"></script>
+</body>
+</html>

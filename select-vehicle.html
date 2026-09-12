@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Select vehicle — EV RangeFinder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <svg class="bolt" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 2L4 14H11L10 22L20 9H13L13 2Z" fill="#00D9A0"/>
+    </svg>
+    EV RangeFinder
+  </div>
+  <nav>
+    <a href="select-vehicle.html" class="current">Vehicle</a>
+    <a href="feedback.html">Feedback</a>
+    <a href="login.html" id="logout-link">Sign out</a>
+  </nav>
+</header>
+
+<main>
+  <div class="page-head">
+    <p class="step">Step 1 of 3</p>
+    <h1>What are you driving today?</h1>
+    <p>Each vehicle type loses charge differently — we'll ask the right questions for yours.</p>
+  </div>
+
+  <div class="vehicle-grid">
+
+    <button class="vehicle-card" data-type="2-wheeler">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="5" cy="17" r="3"/><circle cx="19" cy="17" r="3"/><path d="M5 17L9 9H14L16 13H19M9 9L11 6H14M14 9L16 13"/></svg>
+      <h3>2-Wheeler</h3>
+      <span>Scooters &amp; motorbikes</span>
+    </button>
+
+    <button class="vehicle-card" data-type="3-wheeler">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="18" r="2.2"/><path d="M6 18H4V12L8 6H14L17 12H18M11 6V12H17"/></svg>
+      <h3>3-Wheeler</h3>
+      <span>Auto-rickshaws &amp; e-carts</span>
+    </button>
+
+    <button class="vehicle-card" data-type="4-wheeler">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="10" width="18" height="7" rx="1.5"/><circle cx="7.5" cy="17.5" r="1.6"/><circle cx="16.5" cy="17.5" r="1.6"/><path d="M5 10L7 5H17L19 10"/></svg>
+      <h3>4-Wheeler</h3>
+      <span>Cars &amp; SUVs</span>
+    </button>
+
+    <button class="vehicle-card" data-type="lorry">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="9" width="12" height="8" rx="1"/><path d="M13 12H18L21 15V17H18"/><circle cx="5" cy="18.5" r="1.6"/><circle cx="16" cy="18.5" r="1.6"/></svg>
+      <h3>Loaded vehicle</h3>
+      <span>Trucks &amp; lorries</span>
+    </button>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>&copy; 2026 EV RangeFinder. Built for every wheel — 2, 3, 4, and loaded.</span>
+    <div class="footer-links">
+      <a href="feedback.html">Feedback</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  document.querySelectorAll('.vehicle-card').forEach(card => {
+    card.addEventListener('click', () => {
+      localStorage.setItem('ev_vehicle_type', card.dataset.type);
+      window.location.href = 'details.html';
+    });
+  });
+</script>
+</body>
+</html>

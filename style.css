@@ -1,0 +1,333 @@
+/* ============================================
+   EV RangeFinder — Design tokens & base styles
+   ============================================ */
+
+:root {
+  /* Color */
+  --bg-deep: #0B1220;
+  --bg-panel: #121B2E;
+  --bg-panel-raised: #17233B;
+  --line: #24314C;
+  --text-primary: #E8ECEF;
+  --text-muted: #8896AC;
+  --accent-charge: #00D9A0;   /* electric teal-green — energy / charge */
+  --accent-charge-dim: #0A3B32;
+  --accent-volt: #F4C542;     /* voltage yellow — warnings / highlights */
+  --accent-danger: #FF6B6B;
+
+  /* Type */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Layout */
+  --max-width: 960px;
+  --radius-sm: 4px;
+  --radius-md: 10px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  background-image:
+    radial-gradient(circle at 15% -10%, rgba(0, 217, 160, 0.08), transparent 40%),
+    radial-gradient(circle at 100% 10%, rgba(244, 197, 66, 0.05), transparent 35%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.4em 0;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.15rem; }
+
+p { color: var(--text-muted); max-width: 62ch; }
+
+a { color: var(--accent-charge); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+button, input, select { font-family: inherit; font-size: 1rem; }
+
+/* ---------- Top nav ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.brand .bolt {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.topbar nav {
+  display: flex;
+  gap: 1.4rem;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+.topbar nav a.current { color: var(--text-primary); }
+
+/* ---------- Main container ---------- */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+.page-head { margin-bottom: 2rem; }
+.page-head .step { color: var(--accent-charge); font-size: 0.85rem; font-weight: 600; }
+
+/* ---------- Panels / cards ---------- */
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+}
+
+/* ---------- Forms ---------- */
+.field { margin-bottom: 1.25rem; }
+
+.field label {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  background: var(--bg-panel-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: var(--accent-charge);
+}
+
+.field-row { display: flex; gap: 1rem; }
+.field-row .field { flex: 1; }
+
+.toggle-group { display: flex; gap: 0.6rem; }
+
+.toggle-option {
+  flex: 1;
+  text-align: center;
+  padding: 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--text-muted);
+  background: var(--bg-panel-raised);
+  transition: all 0.15s ease;
+}
+
+.toggle-option input { display: none; }
+
+.toggle-option.active {
+  border-color: var(--accent-charge);
+  color: var(--accent-charge);
+  background: var(--accent-charge-dim);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.1s ease, opacity 0.15s ease;
+}
+
+.btn:active { transform: scale(0.98); }
+
+.btn-primary {
+  background: var(--accent-charge);
+  color: #05261E;
+}
+.btn-primary:hover { opacity: 0.9; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--line);
+}
+.btn-ghost:hover { border-color: var(--accent-charge); }
+
+.btn-block { width: 100%; }
+
+.form-foot {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.error-text {
+  color: var(--accent-danger);
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+  display: none;
+}
+
+/* ---------- Vehicle selection ---------- */
+.vehicle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1rem;
+}
+
+.vehicle-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.25rem;
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.1s ease;
+  text-align: left;
+}
+
+.vehicle-card:hover { transform: translateY(-2px); border-color: var(--accent-charge); }
+
+.vehicle-card svg { width: 44px; height: 44px; margin-bottom: 0.9rem; color: var(--accent-charge); }
+
+.vehicle-card h3 { margin-bottom: 0.25rem; }
+.vehicle-card span { font-size: 0.85rem; color: var(--text-muted); }
+
+/* ---------- Gauge (range result) ---------- */
+.gauge-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 0 0.5rem;
+}
+
+.gauge-value {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--accent-charge);
+  line-height: 1;
+}
+
+.gauge-unit { color: var(--text-muted); font-size: 1rem; margin-top: 0.3rem; }
+
+.factor-list { list-style: none; padding: 0; margin: 1.5rem 0 0; }
+
+.factor-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.92rem;
+}
+
+.factor-list li:last-child { border-bottom: none; }
+.factor-list .impact-neg { color: var(--accent-danger); }
+.factor-list .impact-pos { color: var(--accent-charge); }
+
+/* ---------- Station list ---------- */
+.station-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.8rem; }
+
+.station-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.2rem;
+  background: var(--bg-panel-raised);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--accent-charge);
+}
+
+.station-item .distance { color: var(--accent-volt); font-weight: 600; white-space: nowrap; margin-left: 1rem; }
+
+/* ---------- Feedback / stars ---------- */
+.star-rating { display: flex; gap: 0.4rem; font-size: 1.8rem; cursor: pointer; }
+.star-rating .star { color: var(--line); transition: color 0.1s ease; }
+.star-rating .star.filled { color: var(--accent-volt); }
+
+textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 0.85rem;
+  background: var(--bg-panel-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  resize: vertical;
+  font-family: var(--font-body);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 2rem 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-links { display: flex; gap: 1.2rem; }
+
+/* ---------- Utility ---------- */
+.center { text-align: center; }
+.mt-2 { margin-top: 2rem; }
+.hidden { display: none !important; }
+
+@media (max-width: 560px) {
+  .field-row { flex-direction: column; gap: 0; }
+  .gauge-value { font-size: 2.4rem; }
+}

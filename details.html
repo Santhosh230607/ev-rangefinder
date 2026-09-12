@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trip details — EV RangeFinder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <svg class="bolt" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13 2L4 14H11L10 22L20 9H13L13 2Z" fill="#00D9A0"/>
+    </svg>
+    EV RangeFinder
+  </div>
+  <nav>
+    <a href="select-vehicle.html">Vehicle</a>
+    <a href="details.html" class="current">Details</a>
+    <a href="feedback.html">Feedback</a>
+  </nav>
+</header>
+
+<main>
+  <div class="page-head">
+    <p class="step">Step 2 of 3</p>
+    <h1 id="page-title">Tell us about this trip</h1>
+    <p id="page-sub">A few quick details and we'll calculate your real-world range.</p>
+  </div>
+
+  <form id="details-form" class="panel">
+
+    <!-- Shared: charge -->
+    <div class="field">
+      <label for="current-charge">Current battery charge (%)</label>
+      <input type="number" id="current-charge" min="1" max="100" placeholder="e.g. 80" required>
+    </div>
+
+    <!-- Shared: weather -->
+    <div class="field">
+      <label for="weather">Outside temperature (°C)</label>
+      <input type="number" id="weather" placeholder="e.g. 34" required>
+    </div>
+
+    <!-- 4-wheeler / lorry only: AC -->
+    <div class="field hidden" id="ac-field">
+      <label>Air conditioning</label>
+      <div class="toggle-group">
+        <label class="toggle-option" data-ac="on"><input type="radio" name="ac" value="on"> AC on</label>
+        <label class="toggle-option active" data-ac="off"><input type="radio" name="ac" value="off" checked> AC off</label>
+      </div>
+    </div>
+
+    <!-- 2/3 wheeler only: riders -->
+    <div class="field hidden" id="riders-field">
+      <label for="riders">Number of riders</label>
+      <input type="number" id="riders" min="1" max="3" value="1">
+    </div>
+
+    <!-- 3-wheeler / lorry only: load -->
+    <div class="field hidden" id="load-field">
+      <label for="load">Load carried (kg)</label>
+      <input type="number" id="load" min="0" placeholder="e.g. 250">
+    </div>
+
+    <!-- lorry only: full load flag -->
+    <div class="field hidden" id="fullload-field">
+      <label>Is the vehicle fully loaded?</label>
+      <div class="toggle-group">
+        <label class="toggle-option" data-full="yes"><input type="radio" name="fullload" value="yes"> Yes</label>
+        <label class="toggle-option active" data-full="no"><input type="radio" name="fullload" value="no" checked> No</label>
+      </div>
+    </div>
+
+    <!-- Shared: terrain -->
+    <div class="field">
+      <label for="terrain">Route terrain</label>
+      <select id="terrain">
+        <option value="flat">Mostly flat</option>
+        <option value="hilly">Hilly / ghat roads</option>
+      </select>
+    </div>
+
+    <!-- Shared: road / speed type — sustained speed drains charge faster than stop-and-go -->
+    <div class="field">
+      <label for="road-type">Road &amp; speed type</label>
+      <select id="road-type">
+        <option value="highway">Highway — sustained high speed</option>
+        <option value="traffic">Traffic road — stop-and-go</option>
+        <option value="mixed">Mixed — highway + city roads</option>
+      </select>
+      <p style="color:var(--text-muted);font-size:0.82rem;margin:0.4rem 0 0;">Sustained highway speed pulls more charge per km than slower stop-and-go traffic.</p>
+    </div>
+
+    <div class="field-row">
+      <div class="field">
+        <label for="start">Starting place</label>
+        <input type="text" id="start" placeholder="e.g. Anna Nagar, Chennai" required>
+      </div>
+      <div class="field">
+        <label for="destination">Destination</label>
+        <input type="text" id="destination" placeholder="e.g. Velachery, Chennai" required>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Calculate my range</button>
+  </form>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>&copy; 2026 EV RangeFinder. Built for every wheel — 2, 3, 4, and loaded.</span>
+    <div class="footer-links">
+      <a href="feedback.html">Feedback</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="mileage.js"></script>
+</body>
+</html>
